@@ -24,4 +24,4 @@ jobs:
 
       - name: Lint SQL Files
         run: |
-          sqlfluff lint $GITHUB_WORKSPACE/DataSchema.sql --dialect postgresql
+          sqlfluff lint $GITHUB_WORKSPACE/DataSchema.sql --dialect mysql
