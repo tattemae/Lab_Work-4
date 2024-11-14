@@ -1,17 +1,17 @@
 CREATE TABLE CLIENT (
     CLIENT_ID INT PRIMARY KEY,
     NAME VARCHAR(100) NOT NULL
-    -- Regular expression: only letters
+    -- Регулярний вираз: тільки букви
     CHECK (NAME ~ '^[A-Za-zА-Яа-яёЁЇїІіЄєҐґ]{1,100}$'),
     STATUS VARCHAR(20) NOT NULL
-    -- Regular expression: only letters, up to 20 characters
+    -- Регулярний вираз: тільки букви, до 20 символів
     CHECK (STATUS ~ '^[A-Za-zА-Яа-я]{1,20}$')
 );
 
 CREATE TABLE BARISTA (
     BARISTA_ID INT PRIMARY KEY,
     NAME VARCHAR(100) NOT NULL
-    -- Regular expression: only letters
+    -- Регулярний вираз: тільки букви
     CHECK (NAME ~ '^[A-Za-zА-Яа-яёЁЇїІіЄєҐґ]{1,100}$'),
     LEVEL VARCHAR(20) NOT NULL
 );
@@ -41,9 +41,8 @@ CREATE TABLE INGREDIENT (
     FOREIGN KEY (DRINK_ID) REFERENCES DRINK (DRINK_ID)
 );
 
--- Changed 'SYSTEM' to 'SYSTEM_LOG' to avoid using a reserved keyword
-CREATE TABLE SYSTEM_LOG (
-    SYSTEM_LOG_ID INT PRIMARY KEY,
+CREATE TABLE SYSTEM (
+    SYSTEM_ID INT PRIMARY KEY,
     BARISTA_ID INT,
     FOREIGN KEY (BARISTA_ID) REFERENCES BARISTA (BARISTA_ID)
 );
