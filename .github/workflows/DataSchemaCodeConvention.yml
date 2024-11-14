@@ -1,0 +1,27 @@
+name: SQL Linter
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  SQLLinter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code in Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install SQLFluff
+        run: |
+          pip install sqlfluff
+
+      - name: Lint SQL Files
+        run: |
+          sqlfluff lint $GITHUB_WORKSPACE/DataSchema.sql --dialect oracle
