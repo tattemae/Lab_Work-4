@@ -1,14 +1,17 @@
 CREATE TABLE CLIENT (
     CLIENT_ID INT PRIMARY KEY,
     CLIENT_NAME VARCHAR(100) NOT NULL,
+    -- Регулярний вираз: тільки букви
     CHECK (CLIENT_NAME REGEXP '^[A-Za-zА-Яа-яёЁЇїІіЄєҐґ]{1,100}$'),
     CLIENT_STATUS VARCHAR(20) NOT NULL,
+    -- Регулярний вираз: тільки букви, до 20 символів
     CHECK (CLIENT_STATUS REGEXP '^[A-Za-zА-Яа-я]{1,20}$')
 );
 
 CREATE TABLE BARISTA (
     BARISTA_ID INT PRIMARY KEY,
     BARISTA_NAME VARCHAR(100) NOT NULL,
+    -- Регулярний вираз: тільки букви
     CHECK (BARISTA_NAME REGEXP '^[A-Za-zА-Яа-яёЁЇїІіЄєҐґ]{1,100}$'),
     EXPERIENCE_LEVEL VARCHAR(20) NOT NULL
 );
@@ -42,7 +45,7 @@ CREATE TABLE INGREDIENT (
     REFERENCES DRINK (DRINK_ID)
 );
 
-
+-- Змінив 'SYSTEM' на 'SYSTEM_LOG' для уникнення використання зарезервованого слова
 CREATE TABLE SYSTEM_LOG (
     SYSTEM_LOG_ID INT PRIMARY KEY,
     BARISTA_ID INT,
